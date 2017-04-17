@@ -22,7 +22,7 @@ if __name__ == "__main__":
         obj = Kprototype.Kprototypes()
         obj.setclsuter_number(iter)
         centroids.append(obj)
-        datapoints = lines[iter + 10]
+        datapoints = lines[iter]
         currentDataPoint = kprototype_method.formdatapoints(datapoints, cate_dim, num_dim)
         iter += 1
 
@@ -59,10 +59,12 @@ if __name__ == "__main__":
         val = predected_labels.getclusterId(k)
         class_pred.append(val)
 
+    file= open("adult_truth.txt", 'rU')
+
     label_line = file.readlines()
     class_true = [int(x.strip()) for x in label_line]
     clustering_accuracy = accuracy_score(class_true, class_pred)
-    print("predicate_class",class_pred)
-    print("actual_class",class_true)
+   # print("predicate_class",class_pred)
+    #print("actual_class",class_true)
     print("clsutering accuracy:", clustering_accuracy * 100)
     print ("clustring error:", 1 - clustering_accuracy)
